@@ -1,23 +1,24 @@
+// npm install react-router-dom
+import { Routes, Route, Link } from 'react-router-dom';
+import Inicio from './pages/Inicio';
+import Post from './pages/Post';
+
 import logo from './logo.svg';
 import './App.css';
+import Inicio2 from './pages/Inicio2';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+      <Routes>
+
+        {/* rutas validad para la app y que pagina muestra cada ruta */}
+        <Route path="/" element={ <Inicio /> } />
+        <Route path="/post/:id" element={ <Post /> } />
+        
+      </Routes>
+
     </div>
   );
 }
