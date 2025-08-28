@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 // Importar estilos css
 import './Inicio.css';
+import Postfeed from '../components/Postfeed/Postfeed';
 
 function Inicio() {
 
@@ -39,41 +40,9 @@ function Inicio() {
       })
       .catch((error) =>
       {
-          console.error('Error al cargar usuarios:', error);
+          console.error('Error al cargar datos:', error);
       });
 
-
-      var datos = 
-      {
-
-          "proveedores":
-          [
-              {
-                  "id": 1,
-                  "nombre": "Productos del centro S.A de C.V",
-                  "dirección": "Avenida del centro SN, CDMX",
-                  "productos": 
-                  [
-                      { "id": 1, "nombre": "TV 55 pulgadas samsung", "precio": 15000 },
-                      { "id": 2, "nombre": "Macbook air 2022", "precio": 25000 },
-                      { "id": 3, "nombre": "Audifonos Marshall", "precio": 3500 },
-                  ]
-              },
-              {
-                  "id": 2,
-                  "nombre": "Comercializadora de precios bajos S. de R.L",
-                  "dirección": "Calle alamos SN, Toluca, Edomex",
-                  "productos": 
-                  [
-                      { "id": 4, "nombre": "Iphone 14 pro max", "precio": 27000 },
-                      { "id": 5, "nombre": "Laptop gamer MSI", "precio": 20000 },
-                      { "id": 6, "nombre": "Samsung S24", "precio": 22000 },
-                  ]
-              },
-              
-          ]
-
-      }
       
   }, []); 
 
@@ -85,37 +54,9 @@ function Inicio() {
 
       post.map((post_item)=>
       (
-          <a href={ 'http://localhost:3000/post/' + post_item.id } key={ post_item.id }>
-            <div className='post_item' >
+      
+        <Postfeed id={ post_item.id } usuario={ post_item.usuario } fecha={ post_item.fecha } texto={ post_item.texto } imagenes={ post_item.imagenes } me_gusta={ post_item.me_gusta } />
 
-              <div className='post_cabecera'>
-                
-                <div className='post_cabecera_arriba'>
-                  <div className='post_cabecera_arriba_izq'>
-                    <img src="https://madeinfoot.ouest-france.fr/photos/buzz/2020/zoom/-20200624084318-2433.jpg" alt='' />
-                  </div>
-                  <div className='post_cabecera_arriba_der'>
-                    <p>{ post_item.usuario }</p>
-                    <span>{ post_item.fecha }</span>
-                  </div>
-                </div>
-                <div className='post_cabecera_abajo'>
-                  <p>{ post_item.texto }</p>
-                </div>
-              </div>
-              <div className='post_imagenes'>
-                <img src={ post_item.imagenes[0].url } />
-              </div>
-              <div className='me_gusta_contenedor'>
-                <div className='me_gusta_contenedor_inner'>
-                  <button className='btn_megusta'></button>
-                  <span>{ post_item.me_gusta }</span>
-                </div>
-                
-              </div>
-              
-            </div>
-          </a>
         
       ))
 
